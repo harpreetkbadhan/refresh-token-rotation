@@ -1,0 +1,69 @@
+{
+  "name": "refresh-token-rotation",
+  "version": "0.1.0",
+  "description": "Refresh-token rotation with reuse detection for Node.js, and a fetch client that refreshes once for many parallel 401s.",
+  "keywords": [
+    "refresh-token",
+    "token-rotation",
+    "reuse-detection",
+    "authentication",
+    "oauth",
+    "session",
+    "react-native"
+  ],
+  "license": "MIT",
+  "author": "Harpreet Kumar",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harpreetkbadhan/refresh-token-rotation.git"
+  },
+  "homepage": "https://github.com/harpreetkbadhan/refresh-token-rotation#readme",
+  "bugs": "https://github.com/harpreetkbadhan/refresh-token-rotation/issues",
+  "type": "module",
+  "engines": {
+    "node": ">=20.19"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./client": {
+      "types": "./dist/client.d.ts",
+      "default": "./dist/client.js"
+    },
+    "./testing": {
+      "types": "./dist/testing.d.ts",
+      "default": "./dist/testing.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "typesVersions": {
+    "*": {
+      "client": [
+        "./dist/client.d.ts"
+      ],
+      "testing": [
+        "./dist/testing.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "@vitest/coverage-v8": "^5.1.1",
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.1"
+  }
+}
